@@ -56,48 +56,82 @@
     </div>
 
       <div> 
-        Has everyone installed <a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a> on your laptop?
-
+        Has everyone installed <a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>?
     </div>
   
   <div> 
         Tabular data - the history
  <br /> - Let's go to 
-    <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">this Python notebook for tabular data history</a>
+    <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">this Python notebook for a tour of tabular data history</a>
    </div>
 
   <div> 
-     Most common types of charts/plots for visualizing tabualr data:
+     Most common types of charts/plots for visualizing tabular data:
       <br /> - <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
-       <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Bar charts </a>
-      <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Pie chart</a>
-    <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Scatter plots</a>
-    <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Heatmaps</a>
-     <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Area charts</a>
-     <br /> - <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">Dual-Axis Charts</a>
-  
+       <br /> - <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
+      <br /> - <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
+    <br /> - <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
+    <br /> - <a href="https://en.wikipedia.org/wiki/Heat_map">Heatmaps</a>
+     <br /> - <a href="https://en.wikipedia.org/wiki/Area_chart">Area charts</a>
+     <br /> - <a href="https://www.chartjs.org/docs/latest/samples/line/multi-axis.html">Dual-Axis Charts</a>
    </div>
-  
-    <div> 
-      We can visualize tabular data using Python with help from these Python libraries:
-        Chart types for visualizing tabular data
 
+  <div> 
+      We can visualize tabular data using Python with help from these Python libraries:
+    <br /> - <a href="https://github.com/pandas-dev/pandas">Numpy</a> for handling large multi-dimensional arrays, and carrying out numerical computing
+        <br /> - <a href="https://github.com/pandas-dev/pandas">Pandas</a> for reading and processing tabular data
+       <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for creating static, animated, and interactive visualizations.
+      <br /> - <a href="https://seaborn.pydata.org/">seaborn</a> (based on matplotlib) for providing a high-level interface for drawing attractive and informative statistical graphics.
    </div>
+
+
+
+    <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
+      <br /> - Best for <b>comparing values across categories</b>. Bar charts provide a clear visual distinction between groups. 
+    <br /> - Use horizontal bars when category names are long or there are many categories. 
+    <br /> - Use vertical bars when showing time progression. It aligns naturally with how we read trends and values over time.
+    <br /> - Variants include stacked bar charts, grouped bar charts, etc.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/index.html#lines-bars-and-markers">bar charts from Matplotlib</a> with <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/bar_label_demo.html#sphx-glr-gallery-lines-bars-and-markers-bar-label-demo-py">a code example</a>! 
+   </div>
+  
+  <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
+      <br /> - Best for showing <b>trends over time and identifying fluctuations</b>.  
+    <br /> - Choose a line chart over a bar chart for time-series data, because it emphasizes continuity and makes trends easier to spot.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html#sphx-glr-gallery-lines-bars-and-markers-simple-plot-py">line charts from Matplotlib</a>(with synthesized random data) ! 
+   </div>
+
+   <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
+      <br /> - Best for <b>showing parts of a whole</b>. For example, percentage of sales by product category or market share by major players. 
+     <br /> - Pie charts are simple and effective for illustrating proportions. If precision is important or the data has many categories, use a bar chart instead.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html#">pie charts from Matplotlib</a> (with synthesized random data)! 
+   </div>
+
+   <div> 
+    <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
+      <br /> - Best for exploring <b>relationships between two variables</b>. For example marketing spend vs. customer acquisition. 
+     <br /> - Scatter plots help identify correlations or outliers in data. Use for more in-depth analysis.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py">scatter plots from Matplotlib</a> (with synthesized random data) ! 
+   </div>
+  
+  
+    
 
   <div> 
         Creative examples of tabular data visualization
     <ul>
     <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a>  </li>
-    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a> </li>
-    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a> </li>
-    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a> </li>
+    <li> <a href="https://waitbutwhy.com/2014/05/life-weeks.html">Your life in weeks</a> </li>
+    <li> <a href="https://truth-and-beauty.net/">works from data artist Moritz Stefaner</a> </li>
+    <li> <a href="https://www.nathaliemiebach.com/">works from data artist Nathalie Miebach</a> </li>
   </ul>
   
    </div>
 
   <div> 
       A demo project for visualizing shopping trend data using Python
-
    </div>
 
     
@@ -105,22 +139,14 @@
     <div> 
     🕶️ What we have learnt today:
       <br />
-    - Charts:
-       <br /> - - can be structured or unstructured
-        <br /> - - from various domains
-       <br /> - - contain information and/or answers to your research questions      
+    - 📊📈📉Charts:
+       <br /> - - Line, Bar, Pie, Scatter, Heatmaps, Area, Dual-axis  
     <br />
-    - Representation: descriptive, perspective and contextual (task-dependent)
-    <br />
-    - Numeric representation: use numbers to represent
-    <br />
-    - Ryoji Ikeda
-    <br />
-    - Hands-on: introduction to Google Colab Notebook
-    <br />
-    - Hands-on: introduction to Python basics
-  </div>
-  
+    - ✋Hands-on project with Python libraries: pandas, <a href="https://matplotlib.org/stable/gallery/index.html">matplotlib</a>, <a href=" https://seaborn.pydata.org/examples/index.html">seaborn</a>
+ <br />
+      - a practical guide for good data visualization design <a href="https://medium.com/design-bootcamp/data-visualization-and-dashboard-design-case-study-c639da21e4c9">here</a> 
+    </div>
+ 
   <div> 
     We'll see you next Tuesday same time and same place!
   </div>
