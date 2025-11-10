@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Data Representation Visualization</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    DRV👐
+    <br />
+    Lecture 07
+    <br />
+    Introduction to image data representation and visualization using Python
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+  <div> By the end of this lecture, we'll have learnt about:
+  
+    <br /> - how images are represented nemerically in our computers 
+    <br /> - how to use Python to read and save images
+    <br /> - how to use Python to process images and extract high-level information
+   
+  </div>
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+
+  <div> 
+        Image - the history
+ <br /> - Let's go to 
+    <a href="https://moodle.arts.ac.uk/mod/folder/view.php?id=1561670">this Python notebook for a tour of tabular data history</a>
+   </div>
+
+  <div> 
+     Most common types of charts/plots for visualizing tabular data:
+      <br /> - <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
+       <br /> - <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
+      <br /> - <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
+    <br /> - <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
+    <br /> - <a href="https://en.wikipedia.org/wiki/Heat_map">Heatmaps</a>
+     <br /> - <a href="https://en.wikipedia.org/wiki/Area_chart">Area charts</a>
+     <br /> - <a href="https://www.chartjs.org/docs/latest/samples/line/multi-axis.html">Dual-Axis Charts</a>
+   </div>
+
+  <div> 
+      We can visualize tabular data using Python with help from these Python libraries:
+    <br /> - <a href="https://github.com/pandas-dev/pandas">Numpy</a> for handling large multi-dimensional arrays, and carrying out numerical computing
+        <br /> - <a href="https://github.com/pandas-dev/pandas">Pandas</a> for reading and processing tabular data
+       <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for creating static, animated, and interactive visualizations.
+      <br /> - <a href="https://seaborn.pydata.org/">seaborn</a> (based on matplotlib) for providing a high-level interface for drawing attractive and informative statistical graphics.
+   </div>
+
+
+<div> 
+        Creative examples of tabular data visualization
+    <ul>
+    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a>  </li>
+    <li> <a href="https://waitbutwhy.com/2014/05/life-weeks.html">Your life in weeks</a> </li>
+    <li> <a href="https://truth-and-beauty.net/">works from data artist Moritz Stefaner</a> </li>
+    <li> <a href="https://www.nathaliemiebach.com/">works from data artist Nathalie Miebach</a> </li>
+  </ul>
+     </div>
+  
+    <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/bar.html">Bar charts </a>
+      <br /> - Best for <b>comparing values across categories</b>. Bar charts provide a clear visual distinction between groups. 
+    <br /> - Use horizontal bars when category names are long or there are many categories. 
+    <br /> - Use vertical bars when showing time progression. It aligns naturally with how we read trends and values over time.
+    <br /> - Variants include stacked bar charts, grouped bar charts, etc.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/index.html#lines-bars-and-markers">bar charts from Matplotlib</a> with <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/bar_label_demo.html#sphx-glr-gallery-lines-bars-and-markers-bar-label-demo-py">a code example</a>! 
+   </div>
+  
+  <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/line.html">Line charts</a>
+      <br /> - Best for showing <b>trends over time and identifying fluctuations</b>.  
+    <br /> - Choose a line chart over a bar chart for time-series data, because it emphasizes continuity and makes trends easier to spot.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html#sphx-glr-gallery-lines-bars-and-markers-simple-plot-py">line charts from Matplotlib</a>(with synthesized random data) ! 
+   </div>
+
+   <div> 
+     <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">Pie chart</a>
+      <br /> - Best for <b>showing parts of a whole</b>. For example, percentage of sales by product category or market share by major players. 
+     <br /> - Pie charts are simple and effective for illustrating proportions. If precision is important or the data has many categories, use a bar chart instead.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html#">pie charts from Matplotlib</a> (with synthesized random data)! 
+   </div>
+
+   <div> 
+    <a href="https://www.chartjs.org/docs/latest/charts/scatter.html">Scatter plots</a>
+     <br /> - Best for exploring <b>relationships between two variables</b>. For example marketing spend vs. customer acquisition. 
+     <br /> - Scatter plots help identify correlations or outliers in data. Use for more in-depth analysis.
+     <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py">scatter plots from Matplotlib</a> (with synthesized random data) ! 
+   </div>
+
+   <div> 
+   <a href="https://en.wikipedia.org/wiki/Heat_map">Heatmaps</a>
+      <br /> -Best for visualizing intensity or density across categories or time. For example, customer activity by hour and day. 
+      <br /> - Heatmaps use color to represent data values, making it easy to spot patterns or anomalies.
+      <br /> ✋Let's check <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/image_annotated_heatmap.html">heatmaps from Matplotlib</a> (with synthesized random data) ! 
+   </div>
+  
+   <div> 
+      How about <a href="https://seaborn.pydata.org/">seaborn</a>? 
+        <br /> - It is based on Matplotlib, very familiar syntax (but with more interesting aesthetics imo). 
+      <br /> ✋Let's check <a href="https://seaborn.pydata.org/examples/index.html">some examples from seaborn</a> on the chart types we have covered using Matplotlib.
+   </div>
+  
+
+
+  <div> 
+    So far we have been using mostly random and small-scale tabular data (synthesized using Numpy)!
+    <br /> - how about some real tabular data?
+   <br /> - It will be a combination of Matplotlib/Seaborn and Pandas, where the latter handles the tabular data importing and processing.
+   </div>
+
+  
+    <div> 
+    <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1561680">Here</a> is a demo project for visualizing Iris dataset, using Python libraries Pandas and Matplotlib.
+     <br /> - Download the zip and unzip it.
+      <br /> - We'll start from creating a Python virtual environment!
+      <br /> - This prevents conflicts between packages and ensures that your projects are reproducible.
+       <br /> - It may seem like an extra step but is a necessary step for almost every fancy python-based DS&AI project you are going to play with in the future!
+   </div>
+
+  <div>
+  <h3>Let me demonstrate how to create a virtual python environment in VSCode!</h3>
+</div>
+
+   <div>
+ <h3>Setup Python environment</h3>
+  <p> Let's create a new python environment!  </p> 
+  <p>- different ways to do this as listed <a href="https://code.visualstudio.com/docs/python/environments">here</a> </p>
+  <p>1. via VSCode command line </p>
+  <p>2. (classic) via terminal and conda </p>
+</div>
+
+     <div>
+<h3>Setup Python environment - I'll demo</h3>
+  <p> 1. open terminal from VSCode </p> 
+  <p> 2. the hacky commands  "cd" "pwd" "ls"!! (I'll demo) let's use them to navigate into the folder containing the code for iris data visualization  </p> 
+  <p> 3. run this: conda create --name iris --file requirements.txt</p>
+  <p>4. run this: conda activate iris </p>
+  <p> did you see the (iris) appearing in the terminal?😘 </p>
+</div>
+
+     <div>
+ <h3>Your turn 😎</h3>
+  <p> Run the cells one by one!🕶️ </p> 
+  <p>- (first time running the cell you might get a pop-up message saying "ipykernel" needs to be installed - just click on the install and it will start installing automatically!)</p>
+  <p> Give the comments in code a read 🕶️</p> 
+</div>
+
+    <div> 
+    🕶️ What we have learnt today:
+      <br />
+    - How to represent digital images using numbers
+       <br /> - - RGB, RGBA, Greyscale
+    <br />
+    - ✋Hands-on project with Python: create a python environment AGAIN
+ <br />
+   - ✋Hands-on project with Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a>
+
+    </div>
+ 
+  <div> 
+    We'll see you next Tuesday same time and same place!
+  </div>
+  
+</body>
+</html>
