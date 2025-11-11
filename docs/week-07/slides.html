@@ -214,9 +214,11 @@ Let's play with different color models <a href="https://www.csfieldguide.org.nz/
     <div> 
    ✋Hands-on - let's write some code together!
      <br /> - Open a new folder in VS Code.
-      <br /> - Create a virtual python environment and activate it. (you can also re-use the one from last week!)
-      <br /> - pip install numpy, pillow, matplotlib and opencv accordingly.
        <br /> - create a new .ipynb file and open it in VS code!
+      <br /> - Find an image (local or from the internet) and drop it into the working folder!
+      <br /> - Create a virtual python environment and activate it. (you can also re-use the one from last week!)
+      <br /> - pip install numpy, pillow, matplotlib and opencv-python accordingly.
+      
    </div>
 
   <div>
@@ -240,7 +242,7 @@ arr = np.array(img)
 print(arr.shape, arr.dtype)
   </code></pre>
   <b>Example output:</b> (256, 256, 3) uint8  
-  → 256×256 pixels, 3 color channels
+  → 256×256 pixels, 3 color channels, each number is an 8-bit unsigned integer.
 </div>
 
   <div>
@@ -333,7 +335,7 @@ plt.imshow(edges, cmap='gray')
   <h3>Visualizing Filters and Edges</h3>
   <ul>
     <li>Helps understand feature extraction in vision models</li>
-    <li>Examples: Sobel, Laplacian, Gaussian blur</li>
+    <li>Examples: Sobel, Laplacian, Gaussian blur (Google these and try the code!)</li>
   </ul>
 </div>
 
