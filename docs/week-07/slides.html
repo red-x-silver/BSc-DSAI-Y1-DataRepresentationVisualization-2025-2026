@@ -50,8 +50,8 @@
 
 
   <div> 
-        Image! 🕶️
- <br /> - let's take a look at the evolution of image capture technology.
+        🕶️ Image - the history
+ <br /> - let's start with the evolution of image capture technology.
     
    </div>
 
@@ -148,19 +148,25 @@
 <div>
   <h3>What is a digital image?</h3>
   <ul>
-    <li>A 2D array (matrix) of pixel intensity values</li>
+    <li>A 2D array (matrix) of pixel intensity values (more on these values later)</li>
     <li>Each pixel represents light intensity at a specific spatial location</li>
     <li>Images can be grayscale or color (multi-channel)</li>
   </ul>
 </div>
 
   <div>
-  <h3>Digital Image Representation</h3>
+  <h3>Digital Image Representation - the dimensions</h3>
   <ul>
     <li>Spatial resolution → number of pixels (e.g. 1920×1080)</li>
     <li>Bit depth → number of bits per pixel (e.g. 8-bit, 24-bit)</li>
     <li>Color depth → how many color channels (1 for grayscale, 3 for RGB)</li>
   </ul>
+</div>
+
+   <div>
+  But what are the numbers in a digital image? What are "pixel intensity values"?
+  <br />
+  - They are numerical data that describe a single pixel's brightness or color or transparency within a digital image, depending on what color model is used.
 </div>
 
   <div>
@@ -188,11 +194,29 @@ Let's play with different color models <a href="https://www.csfieldguide.org.nz/
   
 
   <div> 
-      We can represent and visualize image data using Python with help from these Python libraries:
+    ✋ We can represent and visualize image data using Python with help from these Python libraries:
     <br /> - <a href="https://pypi.org/project/pillow/">Pillow</a> for reading images into numbers, image processing and file saving.
         <br /> - <a href="https://numpy.org/">Numpy</a> for handling numbers.
        <br /> - <a href="https://matplotlib.org/stable/">Matplotlib</a> for visualizations.
       <br /> - <a href="https://github.com/opencv/opencv">opencv</a> for more complex image processing.
+   </div>
+
+  <div> 
+        Creative examples of image data visualization
+  <p> - Most of the open public image datasets are from computer vision research which is a field of artificial intelligence (AI) that enables computers to interpret and understand the visual world (you'll explore these in the future units!)</p>
+    <ul>
+    <li> <a href="https://navigu.net/#imagenet">An image dataset browser</a>  </li> (ImageNet is a benchmark computer vision dataset. More datasets can be found in the browser's menu.)
+    <li> <a href="https://exposing.ai/datasets/l">exposing.ai</a> which examines the content and the usage of public image datasets.</li>
+  </ul>
+     </div>
+  
+
+    <div> 
+   ✋Hands-on - let's write some code together!
+     <br /> - Open a new folder in VS Code.
+      <br /> - Create a virtual python environment and activate it. (you can also re-use the one from last week!)
+      <br /> - pip install numpy, pillow, matplotlib and opencv accordingly.
+       <br /> - create a new .ipynb file and open it in VS code!
    </div>
 
   <div>
@@ -323,54 +347,9 @@ plt.imshow(edges, cmap='gray')
   </ul>
 </div>
 
-<div> 
-        Creative examples of image data visualization
-    <ul>
-    <li> <a href="https://eattherichtextformat.github.io/1-pixel-wealth/">Wealth shown to scale</a>  </li>
-    <li> <a href="https://waitbutwhy.com/2014/05/life-weeks.html">Your life in weeks</a> </li>
-    <li> <a href="https://truth-and-beauty.net/">works from data artist Moritz Stefaner</a> </li>
-    <li> <a href="https://www.nathaliemiebach.com/">works from data artist Nathalie Miebach</a> </li>
-  </ul>
-     </div>
+
   
   
-  
-    <div> 
-    <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1561680">Here</a> is a demo project for visualizing Iris dataset, using Python libraries Pandas and Matplotlib.
-     <br /> - Download the zip and unzip it.
-      <br /> - We'll start from creating a Python virtual environment!
-      <br /> - This prevents conflicts between packages and ensures that your projects are reproducible.
-       <br /> - It may seem like an extra step but is a necessary step for almost every fancy python-based DS&AI project you are going to play with in the future!
-   </div>
-
-  <div>
-  <h3>Let me demonstrate how to create a virtual python environment in VSCode!</h3>
-</div>
-
-   <div>
- <h3>Setup Python environment</h3>
-  <p> Let's create a new python environment!  </p> 
-  <p>- different ways to do this as listed <a href="https://code.visualstudio.com/docs/python/environments">here</a> </p>
-  <p>1. via VSCode command line </p>
-  <p>2. (classic) via terminal and conda </p>
-</div>
-
-     <div>
-<h3>Setup Python environment - I'll demo</h3>
-  <p> 1. open terminal from VSCode </p> 
-  <p> 2. the hacky commands  "cd" "pwd" "ls"!! (I'll demo) let's use them to navigate into the folder containing the code for iris data visualization  </p> 
-  <p> 3. run this: conda create --name iris --file requirements.txt</p>
-  <p>4. run this: conda activate iris </p>
-  <p> did you see the (iris) appearing in the terminal?😘 </p>
-</div>
-
-     <div>
- <h3>Your turn 😎</h3>
-  <p> Run the cells one by one!🕶️ </p> 
-  <p>- (first time running the cell you might get a pop-up message saying "ipykernel" needs to be installed - just click on the install and it will start installing automatically!)</p>
-  <p> Give the comments in code a read 🕶️</p> 
-</div>
-
     <div> 
     🕶️ What we have learnt today:
       <br />
@@ -379,7 +358,7 @@ plt.imshow(edges, cmap='gray')
     <br />
     - ✋Hands-on project with Python: create a python environment AGAIN
  <br />
-   - ✋Hands-on project with Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a>
+   - ✋Hands-on project with Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a> for image I/O and simple processing
 
     </div>
  
