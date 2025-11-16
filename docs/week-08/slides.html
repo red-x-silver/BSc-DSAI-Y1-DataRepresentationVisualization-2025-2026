@@ -47,6 +47,12 @@
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
+
+   <div>😎how to use numbers to represent text?
+   <br /> -  today we'll see some fun text representation (e.g. word2vec) that could reveal fun relation between words like this:
+     <br /> - vec("Paris") - vec("France") + vec("Germany") ≈ vec("Berlin")
+   </div>
+  
   <div>
   <h3>📝Text Data</h3>
   <ul>
@@ -216,6 +222,12 @@ print(X.toarray())
   </ul>
 </div>
 
+    <div>😎fun equations from common word2vec embeddings:
+   <br />  vec("brother") - vec("man") + vec("woman") ≈ vec("sister")
+     <br />  vec("Paris") - vec("France") + vec("Germany") ≈ vec("Berlin")
+   </div>
+  
+
   <div>
  Let's use a realistic text dataset for demonstrating word2vec text representation!
  <br /> - the dataset: <a href="https://www.kaggle.com/datasets/quora/question-pairs-dataset/">Question Pairs Dataset</a> 
@@ -276,27 +288,18 @@ print(X.toarray())
 </div>
   
 <div>
-  <h3>Summary</h3>
+  <h3>🕶️ What we have learnt today:</h3>
   <ul>
-    <li>Text must be transformed into structured numerical format.</li>
+    <li>The pipeline for representing any piece of text using numbers: pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings </li>
     <li>Classic representations: BoW, TF–IDF.</li>
     <li>Modern representations: embeddings like word2vec, transformers.</li>
-    <li>Python enables effective visualization and exploration.</li>
+    <li>Text visualization methods: word cloud, co-occurrence graph</li>
+    <li>✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a></li>
+    <li>✋Hands-on practice on how to train a word2vec embedding on a text dataset, and compute word similarity based on the trained word2vec</li>
   </ul>
 </div>
 
  
-    <div> 
-    🕶️ What we have learnt today:
-      <br />
-    - The pipeline for representing any piece of text using numbers:
-       <br /> - - pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings 
-
-  <br />  - text visualization methods: word cloud, co-occurrence graph
- <br />
-   - ✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>
- <br /> - ✋Hands-on practice on how to train a word2vec embedding on a text dataset, and compute word similarity based on the trained word2vec
-    </div>
 
   <div> 
      Homework:
