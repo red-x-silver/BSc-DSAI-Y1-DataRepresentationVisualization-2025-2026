@@ -240,18 +240,8 @@ print(X.toarray())
 <div>
   <h3>✋Demo: Word Cloud Visualization</h3>
   <p>Displays most frequent words based on size.</p>
-
-  <pre><code>
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-
-text = open("document.txt").read()
-wc = WordCloud(width=800, height=400).generate(text)
-
-plt.imshow(wc)
-plt.axis("off")
-plt.show()
-  </code></pre>
+   <p>Let's take a look at the cell from the prepared notebook!</p>
+  
 </div>
 <div>
   <h3>Co-occurrence Graphs</h3>
@@ -260,25 +250,18 @@ plt.show()
     <li>Great for topic exploration.</li>
   </ul>
 </div>
+  
 <div>
   <h3>✋Demo: Co-occurrence Graph</h3>
-  <pre><code>
-import networkx as nx
-import matplotlib.pyplot as plt
-
-pairs = [("data","science"), ("machine","learning"), ("data","learning")]
-G = nx.Graph()
-G.add_edges_from(pairs)
-
-nx.draw(G, with_labels=True)
-plt.show()
-  </code></pre>
+  <p>Let's take a look at the cell from the prepared notebook!</p>
 </div>
+  
 <div>
   <h3>[optional] Classical embedding → Modern transformer embeddings</h3>
+   <p>Text representations from a more advanced deep learning technique.</p>
   <ul>
     <li>Before: BoW, TF–IDF, Word2Vec</li>
-    <li>Now: Transformer embeddings (BERT, GPT)</li>
+    <li>Now: Transformer embeddings (<a href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a>, GPT)</li>
     <li>Meaning is encoded contextually, not statically.</li>
   </ul>
 </div>
@@ -309,7 +292,7 @@ plt.show()
     - The pipeline for representing any piece of text using numbers:
        <br /> - - pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings 
  <br />
-    - some text visualization methods: t-sne, word cloud, co-occurrence graphs
+    - Three text visualization methods: t-sne, word cloud, co-occurrence graph
  <br />
    - ✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>
 
