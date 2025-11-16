@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Data Representation Visualization</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    DRV👐
+    <br />
+    Lecture 08
+    <br />
+    Introduction to text data representation and visualization using Python
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+  <div> By the end of this lecture, we'll have learnt about:
+  
+    <br /> - how to represent text data numerically
+    <br /> - the pipeline for representing and visualizing text data: preprocess, tokenization, numerical representation for tokens
+    <br /> - how to use Python to represent and visualize text data, with help from some libraries!
+   
+  </div>
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+  <div>
+  <h3>📝Text Data</h3>
+  <ul>
+    <li>Text is one of the most common forms of human communication.</li>
+    <li>It can be reviews, documents, messages, articles, and chat logs, etc. </li>
+    <li>Unlike images in pixels, text does not have numeric structures — requires processing before analysis.</li>
+    <li>It is the foundation data of <a href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> and modern AI assistants.</li>
+  </ul>
+</div>
+
+<div>
+  <h3>😶‍🌫️Challenges of Text Data</h3>
+  <ul>
+    <li>Ambiguity (same words → different meanings, different words → same meanings)</li>
+    <li>Sparsity (important words does not necessarily appear more frequently than the not-so-important ones.)</li>
+    <li>Variability and diversity (Different languages, slang, grammar)</li>
+    <li>No inherent numeric structure (how to use numbers to represent text?) </li>
+  </ul>
+</div>
+<div>
+  <h3>😎Basic Representation: Tokens</h3>
+  <ul>
+    <li>Processing a long paragraph/sentence, which is usually one long string variable in our computers, is made easier by firstly breaking it into smaller pieces.</li>
+  </ul>
+</div>
+  
+<div>
+  <h3>😎Basic Representation: Tokens</h3>
+  <ul>
+  <li>Tokenization breaks text into smaller and "reuseble" units.</li>
+    <li>Tokenization could of at different levels - words as tokens, subwords as tokens, charaters as tokens.</li>
+    <li>For example, "i ate an apple this morning" can be tokenized into: ["i", "ate", "an", "apple", "this", "morning"] (from the word-level tokenization).</li>    
+    <li>Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://github.com/openai/tiktoken">OpenAI tiktoken</a>.</li>
+  </ul>
+</div>
+
+<div>😎If we can find a way to represent these tokens numerically, we can then "numberify" any text!</div>
+
+<div>✋Next: let's try some hands-on code examples for tokenization
+  <ul>
+  <li>Let's prepare a folder for this week's coding example!
+  <li>Let's open VSCode!
+  <li>Let's ceate a new python notebook in the folder!
+  <li>Let's run the notebook in VSCode!
+  <li>Let's re-use last week's python environment by selecting it! (or <a href="https://red-x-silver.github.io/BSc-DSAI-Y1-DataRepresentationVisualization-2025-2026/week-06/slides.html#19">create a new environment</a> if you don't have one yet:)
+  </ul>
+</div>
+  
+<div>✋Next: let's try some hands-on code examples for tokenization
+  <ul>
+    <li>Let's pip install the libraries we are going to use today: 
+      <pre><code>
+   !pip install nltk spacy wordcloud scikit-learn networkx
+  </code></pre>
+    <li> the use of "!" above is recommended, but not mandentory if you put just the "pip install" (without any other python code) in a code cell.
+  </ul>
+</div>
+
+  <div>
+  <h3>✋Demo: Tokenization (NLTK)</h3>
+  <pre><code>
+import nltk
+from nltk.tokenize import word_tokenize
+
+text = "Text data is powerful!"
+tokens = word_tokenize(text)
+print(tokens)
+  </code></pre>
+
+  <p>Tokenization is the first step in almost all text workflows.</p>
+</div>
+
+<div>
+  <h3>Common text preprocessing steps</h3>
+  <p>Usually there are some other steps before converting tokens into numbers.</p>
+  <ul>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/lowercasing-text-for-uniformity-in-nlp">Lowercasing</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/punctuating-punctuation-streamlining-text-for-nlp">Removing punctuation</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/demystifying-stop-words-in-natural-language-processing">Stopword removal</a></li>
+    <li><a href="https://codesignal.com/learn/courses/text-data-preprocessing-in-python/lessons/mastering-stemming-in-nlp-with-nltk">Stemming and Lemmatization</a></li>
+  </ul>
+  <p>note: you can also apply lowercasing and punctuation removal before tokenization!</p>
+</div>
+  
+<div>
+  <h3>✋Demo: Preprocessing with spaCy</h3>
+  <pre><code>
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+doc = nlp("Cats are running and jumped over fences.")
+tokens = [(token.text, token.lemma_) for token in doc]
+print(tokens)
+  </code></pre>
+
+  <p>Lemma → base form of words (running → run).</p>
+</div>
+
+  <div>😎Now we have the nice pre-processed and tokenized text, let's find out how to represent text numerically!</div>
+  
+<div>
+  <h3>Several ways to represent text numerically</h3>
+  <ul>
+    <li><b>One-hot vectors</b></li>
+    <li><b>Bag-of-Words (BoW)</b></li>
+    <li><b>TF–IDF</b> (term frequency–inverse document frequency)</li>
+    <li><b>Word embeddings</b> (Word2Vec, GloVe)</li>
+    <li><b>Transformer embeddings</b></li>
+  </ul>
+</div>
+<div>
+  <h3>Bag-of-Words (BoW)</h3>
+  <ul>
+    <li>Counts word occurrences in a document.</li>
+    <li>Simple, interpretable, sparse.</li>
+    <li>No order or grammar information.</li>
+  </ul>
+</div>
+<div>
+  <h3>Demo: Bag-of-Words (sklearn)</h3>
+  <pre><code>
+from sklearn.feature_extraction.text import CountVectorizer
+
+docs = ["cats drink milk", "dogs drink water"]
+vec = CountVectorizer()
+X = vec.fit_transform(docs)
+
+print(vec.get_feature_names_out())
+print(X.toarray())
+  </code></pre>
+</div>
+<div>
+  <h3>TF–IDF</h3>
+  <p>Weights words by importance, not just frequency.</p>
+  <ul>
+    <li>TF → how often a word appears</li>
+    <li>IDF → how rare it is across documents</li>
+    <li>Downweights common words (“the”, “of”, “and”)</li>
+  </ul>
+</div>
+<div>
+  <h3>Demo: TF–IDF</h3>
+  <pre><code>
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+docs = ["machine learning is fun", "deep learning is powerful"]
+tfidf = TfidfVectorizer()
+X = tfidf.fit_transform(docs)
+
+print(tfidf.get_feature_names_out())
+print(X.toarray())
+  </code></pre>
+</div>
+<div>
+  <h3>Word Embeddings</h3>
+  <p>Dense vector representations where:</p>
+  <ul>
+    <li>Similar words have similar vectors.</li>
+    <li>Capture semantic meaning.</li>
+    <li>Examples: Word2Vec, GloVe, FastText.</li>
+  </ul>
+</div>
+<div>
+  <h3>Visualizing Word Embeddings with PCA / t-SNE</h3>
+  <p>Useful for showing clusters of similar words.</p>
+
+  <pre><code>
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+
+# given: embedding_matrix and word_list
+tsne = TSNE(n_components=2)
+Z = tsne.fit_transform(embedding_matrix)
+
+plt.scatter(Z[:,0], Z[:,1])
+for i, word in enumerate(word_list):
+    plt.annotate(word, (Z[i,0], Z[i,1]))
+plt.show()
+  </code></pre>
+</div>
+<div>
+  <h3>Word Cloud Visualization</h3>
+  <p>Displays most frequent words based on size.</p>
+
+  <pre><code>
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+text = open("document.txt").read()
+wc = WordCloud(width=800, height=400).generate(text)
+
+plt.imshow(wc)
+plt.axis("off")
+plt.show()
+  </code></pre>
+</div>
+<div>
+  <h3>Co-occurrence Graphs</h3>
+  <ul>
+    <li>Visualize which words appear together.</li>
+    <li>Great for topic exploration.</li>
+  </ul>
+</div>
+<div>
+  <h3>Demo: Co-occurrence Graph</h3>
+  <pre><code>
+import networkx as nx
+import matplotlib.pyplot as plt
+
+pairs = [("data","science"), ("machine","learning"), ("data","learning")]
+G = nx.Graph()
+G.add_edges_from(pairs)
+
+nx.draw(G, with_labels=True)
+plt.show()
+  </code></pre>
+</div>
+<div>
+  <h3>Classical NLP → Modern Transformers</h3>
+  <ul>
+    <li>Before: BoW, TF–IDF, Word2Vec</li>
+    <li>Now: Transformer embeddings (BERT, GPT)</li>
+    <li>Meaning is encoded contextually, not statically.</li>
+  </ul>
+</div>
+<div>
+  <h3>How Transformers Represent Text</h3>
+  <ul>
+    <li>Tokenization → subword units (byte-pair encoding)</li>
+    <li>Vector embedding for each token</li>
+    <li>Self-attention captures relationships across tokens</li>
+    <li>Final output = contextual embeddings</li>
+  </ul>
+</div>
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>Text must be transformed into structured numerical format.</li>
+    <li>Classic representations: BoW, TF–IDF.</li>
+    <li>Modern representations: embeddings, transformers.</li>
+    <li>Python enables effective visualization and exploration.</li>
+  </ul>
+</div>
+<div>
+  <h3>Next: Hands-on Notebook</h3>
+  <p> Everything we have talked about so far (tokenization, TF–IDF, embeddings, and text visualization) in Python.</p>
+</div>
+ 
+    <div> 
+    🕶️ What we have learnt today:
+      <br />
+    - The pipeline for representing any piece of text using numbers:
+       <br /> - - pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings 
+ <br />
+    - some text visualization methods: word cloud, co-occurrence graphs
+ <br />
+   - ✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a> for image I/O and simple processing
+
+    </div>
+
+  <div> 
+     Homework:
+   <br />
+    - Start preparing for your <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559494">final project</a>! 
+  <br />
+    - If you plan to work with content we have covered so far, send me a small proposal on what you plan to make and I'll recommend relevant resources!
+  <br />
+    - If you plan to work with content we have not covered so far, send me a message and I'll recommend early readings/preparation for you!
+  </div>
+  </div>
+  
+  <div> 
+    We'll see you next Tuesday same time and same place!
+  </div>
+  
+</body>
+</html>
+
+  
+  
