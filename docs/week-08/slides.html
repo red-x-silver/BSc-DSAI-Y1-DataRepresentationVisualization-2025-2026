@@ -79,7 +79,7 @@
   <li>Tokenization breaks text into smaller and "reuseble" units.</li>
     <li>Tokenization could of at different levels - words as tokens, subwords as tokens, charaters as tokens.</li>
     <li>For example, "i ate an apple this morning" can be tokenized into: ["i", "ate", "an", "apple", "this", "morning"] (from the word-level tokenization).</li>    
-    <li>Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://github.com/openai/tiktoken">OpenAI tiktoken</a>.</li>
+    <li>Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>, <a href="https://github.com/openai/tiktoken">OpenAI tiktoken</a>.</li>
   </ul>
 </div>
 
@@ -99,9 +99,9 @@
   <ul>
     <li>Let's pip install the libraries we are going to use today: 
       <pre><code>
-   !pip install nltk spacy wordcloud scikit-learn networkx
+   !pip install nltk spacy wordcloud scikit-learn networkx matplotlib
   </code></pre>
-    <li> the use of "!" above is recommended, but not mandentory if you put just the "pip install" (without any other python code) in a code cell.
+    <li> (the use of "!" above is recommended, but not mandentory if you put just the "pip install" (without any other python code) in a code cell.)
   </ul>
 </div>
 
@@ -109,9 +109,10 @@
   <h3>✋Demo: Tokenization (NLTK)</h3>
   <pre><code>
 import nltk
+nltk.download('punkt_tab')
 from nltk.tokenize import word_tokenize
 
-text = "Text data is powerful!"
+text = "Text data is everywhere!" # this is an example text
 tokens = word_tokenize(text)
 print(tokens)
   </code></pre>
@@ -133,7 +134,10 @@ print(tokens)
   
 <div>
   <h3>✋Demo: Preprocessing with spaCy</h3>
+  <p>In a separated code cell, run:
+    <br /> !python -m spacy download en_core_web_sm</p>
   <pre><code>
+
 import spacy
 nlp = spacy.load("en_core_web_sm")
 
@@ -150,15 +154,15 @@ print(tokens)
 <div>
   <h3>Several ways to represent text numerically</h3>
   <ul>
-    <li><b>One-hot vectors</b></li>
-    <li><b>Bag-of-Words (BoW)</b></li>
-    <li><b>TF–IDF</b> (term frequency–inverse document frequency)</li>
-    <li><b>Word embeddings</b> (Word2Vec, GloVe)</li>
-    <li><b>Transformer embeddings</b></li>
+    <li><a href="https://medium.com/analytics-vidhya/one-hot-encoding-of-text-data-in-natural-language-processing-2242fefb2148">One-hot vectors</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Bag-of-words_model">Bag-of-Words (BoW)</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF–IDF</a> (term frequency–inverse document frequency)</li>
+    <li><a href="https://en.wikipedia.org/wiki/Word_embedding">Word embeddings</a> (Word2Vec, GloVe)</li>
+    <li><a href="">Transformer embeddings (more on this in future AI units)</a></li>
   </ul>
 </div>
 <div>
-  <h3>Bag-of-Words (BoW)</h3>
+  <h3><a href="https://en.wikipedia.org/wiki/Bag-of-words_model">Bag-of-Words (BoW)</a></h3>
   <ul>
     <li>Counts word occurrences in a document.</li>
     <li>Simple, interpretable, sparse.</li>
@@ -166,7 +170,7 @@ print(tokens)
   </ul>
 </div>
 <div>
-  <h3>Demo: Bag-of-Words (sklearn)</h3>
+  <h3>✋Demo: Bag-of-Words (sklearn)</h3>
   <pre><code>
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -178,8 +182,9 @@ print(vec.get_feature_names_out())
 print(X.toarray())
   </code></pre>
 </div>
+  
 <div>
-  <h3>TF–IDF</h3>
+  <h3><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF–IDF</a></h3>
   <p>Weights words by importance, not just frequency.</p>
   <ul>
     <li>TF → how often a word appears</li>
@@ -188,11 +193,11 @@ print(X.toarray())
   </ul>
 </div>
 <div>
-  <h3>Demo: TF–IDF</h3>
+  <h3>✋Demo: TF–IDF</h3>
   <pre><code>
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-docs = ["machine learning is fun", "deep learning is powerful"]
+docs = ["machine learning is fun", "deep learning is interesting"]
 tfidf = TfidfVectorizer()
 X = tfidf.fit_transform(docs)
 
@@ -201,34 +206,39 @@ print(X.toarray())
   </code></pre>
 </div>
 <div>
-  <h3>Word Embeddings</h3>
+  <h3><a href="https://en.wikipedia.org/wiki/Word_embedding">Word embeddings</a></h3>
   <p>Dense vector representations where:</p>
   <ul>
     <li>Similar words have similar vectors.</li>
     <li>Capture semantic meaning.</li>
-    <li>Examples: Word2Vec, GloVe, FastText.</li>
+    <li>Examples: <a href="https://jalammar.github.io/illustrated-word2vec/">Word2Vec</a>, GloVe, FastText.</li>
   </ul>
 </div>
+
+  <div>
+ Let's use a realistic text dataset for demonstrating word2vec text representation, and visualize the dataset using t-sne!
+ <br /> - the dataset: <a href="https://www.kaggle.com/datasets/quora/question-pairs-dataset/">Question Pairs Dataset</a> 
+<br /> - this is a csv file, put it into today's working folder (where our python notebook is) and let's explore it briefly!
+</div> 
+ 
+  
 <div>
-  <h3>Visualizing Word Embeddings with PCA / t-SNE</h3>
+  <h3>✋ Demo: Visualizing Word Embeddings with PCA / t-SNE (FUN!)</h3>
   <p>Useful for showing clusters of similar words.</p>
+  <p> <a href="https://www.youtube.com/watch?v=NEaUSP4YerM">t-SNE</a> is a powerful dimensionality reduction technique that transforms high-dimensional data into a low-dimensional space (typically 2D or 3D) while preserving local structures. </p>
+  <p>let's use some help from a library called "genism": !pip install gensim</p>
+  <p> - downlaod the prepared notebook <a href="">here</a>, copy the cells under "Chapter 2" into your notebook and run them!</p>
 
-  <pre><code>
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
-
-# given: embedding_matrix and word_list
-tsne = TSNE(n_components=2)
-Z = tsne.fit_transform(embedding_matrix)
-
-plt.scatter(Z[:,0], Z[:,1])
-for i, word in enumerate(word_list):
-    plt.annotate(word, (Z[i,0], Z[i,1]))
-plt.show()
-  </code></pre>
 </div>
+
+  <div>
+ Note: word2vec and t-sne are worth-exploring topics each of their own, which also require a little bit more deep learning understanding.
+ <br />  <a href="https://remykarem.github.io/word2vec-demo/">Here</a> is a web demo for word2vec and t-sne training, with recommended learning resources listed in the "reference" section.
+</div>  
+  
+  
 <div>
-  <h3>Word Cloud Visualization</h3>
+  <h3>✋Demo: Word Cloud Visualization</h3>
   <p>Displays most frequent words based on size.</p>
 
   <pre><code>
@@ -251,7 +261,7 @@ plt.show()
   </ul>
 </div>
 <div>
-  <h3>Demo: Co-occurrence Graph</h3>
+  <h3>✋Demo: Co-occurrence Graph</h3>
   <pre><code>
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -265,7 +275,7 @@ plt.show()
   </code></pre>
 </div>
 <div>
-  <h3>Classical NLP → Modern Transformers</h3>
+  <h3>[optional] Classical embedding → Modern transformer embeddings</h3>
   <ul>
     <li>Before: BoW, TF–IDF, Word2Vec</li>
     <li>Now: Transformer embeddings (BERT, GPT)</li>
@@ -273,7 +283,7 @@ plt.show()
   </ul>
 </div>
 <div>
-  <h3>How Transformers Represent Text</h3>
+  <h3>[optional]How Transformers Represent Text</h3>
   <ul>
     <li>Tokenization → subword units (byte-pair encoding)</li>
     <li>Vector embedding for each token</li>
@@ -281,19 +291,17 @@ plt.show()
     <li>Final output = contextual embeddings</li>
   </ul>
 </div>
+  
 <div>
   <h3>Summary</h3>
   <ul>
     <li>Text must be transformed into structured numerical format.</li>
     <li>Classic representations: BoW, TF–IDF.</li>
-    <li>Modern representations: embeddings, transformers.</li>
+    <li>Modern representations: embeddings like word2vec, transformers.</li>
     <li>Python enables effective visualization and exploration.</li>
   </ul>
 </div>
-<div>
-  <h3>Next: Hands-on Notebook</h3>
-  <p> Everything we have talked about so far (tokenization, TF–IDF, embeddings, and text visualization) in Python.</p>
-</div>
+
  
     <div> 
     🕶️ What we have learnt today:
@@ -301,9 +309,9 @@ plt.show()
     - The pipeline for representing any piece of text using numbers:
        <br /> - - pre-processing -> tokenization -> BoW/TF-IDF/Word Embeddings 
  <br />
-    - some text visualization methods: word cloud, co-occurrence graphs
+    - some text visualization methods: t-sne, word cloud, co-occurrence graphs
  <br />
-   - ✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://github.com/opencv/opencv">opencv</a>, <a href="https://pypi.org/project/pillow/">PILLOW</a> for image I/O and simple processing
+   - ✋Hands-on practice on representing and visualizing text data with help from Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>
 
     </div>
 
