@@ -67,7 +67,7 @@
   <h3>😶‍🌫️Challenges of Text Data</h3>
   <ul>
     <li>Ambiguity (same words → different meanings, different words → same meanings)</li>
-    <li>Sparsity (important words does not necessarily appear more frequently than the not-so-important ones.)</li>
+    <li>Sparsity (a lot of zeroes "wasted" in one-hot vectors)</li>
     <li>Variability and diversity (Different languages, slang, grammar)</li>
     <li>No inherent numeric structure (how to use numbers to represent text?) </li>
   </ul>
@@ -83,7 +83,7 @@
   <h3>😎Basic Representation: Tokens</h3>
   <ul>
   <li>Tokenization breaks text into smaller and "reuseble" units.</li>
-    <li>Tokenization could of at different levels - words as tokens, subwords as tokens, charaters as tokens.</li>
+    <li>Tokenization could of at different levels - words as tokens, subwords as tokens, characters as tokens.</li>
     <li>For example, "i ate an apple this morning" can be tokenized into: ["i", "ate", "an", "apple", "this", "morning"] (from the word-level tokenization).</li>    
     <li>Python libraries: <a href="https://www.nltk.org/">NLTK</a>, <a href="https://spacy.io/">spaCy</a>, <a href="https://radimrehurek.com/gensim/">gensim</a>, <a href="https://github.com/openai/tiktoken">OpenAI tiktoken</a>.</li>
   </ul>
